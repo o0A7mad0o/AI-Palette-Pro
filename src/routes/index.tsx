@@ -278,7 +278,6 @@ function Index() {
             ألوان جاهزة للنسخ والاستخدام.
           </p>
         </section>
-      </main>
 
         {/* Project Plan CTA */}
         <section className="mx-auto mt-16 max-w-3xl text-center">
