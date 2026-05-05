@@ -280,6 +280,24 @@ function Index() {
         </section>
       </main>
 
+        {/* Project Plan CTA */}
+        <section className="mx-auto mt-16 max-w-3xl text-center">
+          <Card
+            className="rounded-3xl border-0 p-8"
+            style={{ boxShadow: "var(--shadow-elegant)" }}
+          >
+            <h2 className="text-2xl font-bold">خطة المشروع الكاملة</h2>
+            <p className="mt-3 text-muted-foreground">
+              اطّلع على وثيقة المشروع الجامعي بصيغة منسقة: الأهداف، البنية
+              التقنية، سير العمل، وكيفية التشغيل.
+            </p>
+            <Link to="/plan" className="inline-block mt-5">
+              <Button size="lg">عرض خطة المشروع</Button>
+            </Link>
+          </Card>
+        </section>
+      </main>
+
       <footer className="border-t py-6 text-center text-sm text-muted-foreground">
         مشروع جامعي — AI Palette Pro © 2026
       </footer>
