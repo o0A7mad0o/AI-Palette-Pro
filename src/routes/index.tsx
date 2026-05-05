@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useCallback, useEffect, useRef, useState } from "react";
 import {
   contrastText,
@@ -277,6 +277,23 @@ function Index() {
             اللونية الأكثر هيمنة وتمثيلاً للهوية البصرية للصورة. النتيجة: لوحة
             ألوان جاهزة للنسخ والاستخدام.
           </p>
+        </section>
+
+        {/* Project Plan CTA */}
+        <section className="mx-auto mt-16 max-w-3xl text-center">
+          <Card
+            className="rounded-3xl border-0 p-8"
+            style={{ boxShadow: "var(--shadow-elegant)" }}
+          >
+            <h2 className="text-2xl font-bold">خطة المشروع الكاملة</h2>
+            <p className="mt-3 text-muted-foreground">
+              اطّلع على وثيقة المشروع الجامعي بصيغة منسقة: الأهداف، البنية
+              التقنية، سير العمل، وكيفية التشغيل.
+            </p>
+            <Link to="/plan" className="inline-block mt-5">
+              <Button size="lg">عرض خطة المشروع</Button>
+            </Link>
+          </Card>
         </section>
       </main>
 
