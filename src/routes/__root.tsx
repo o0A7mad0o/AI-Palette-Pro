@@ -29,14 +29,18 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
+      { title: "AI Palette Pro" },
+      { name: "description", content: "Palette Pal is an AI-powered web app that extracts visual identity elements from uploaded images." },
       { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { property: "og:title", content: "AI Palette Pro" },
+      { property: "og:description", content: "Palette Pal is an AI-powered web app that extracts visual identity elements from uploaded images." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "AI Palette Pro" },
+      { name: "twitter:description", content: "Palette Pal is an AI-powered web app that extracts visual identity elements from uploaded images." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/c082f7d7-94da-4c20-ac4f-aedb31b18af6/id-preview-20884191--95d2b2d7-cf21-4880-ae33-a6aa01853eb8.lovable.app-1778023614128.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/c082f7d7-94da-4c20-ac4f-aedb31b18af6/id-preview-20884191--95d2b2d7-cf21-4880-ae33-a6aa01853eb8.lovable.app-1778023614128.png" },
     ],
     links: [
       {
