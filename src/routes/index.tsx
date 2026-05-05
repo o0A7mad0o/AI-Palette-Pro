@@ -120,13 +120,13 @@ function Index() {
         />
         <div className="absolute inset-0 -z-10 bg-black/10" aria-hidden />
         <div className="container mx-auto px-6 pt-16 pb-24 text-center text-white">
-          <p className="mb-3 text-sm tracking-widest uppercase opacity-80">
+          <p className="mb-3 text-sm tracking-widest uppercase opacity-80 text-gray-900">
             AI Palette Pro
           </p>
-          <h1 className="mx-auto max-w-3xl text-4xl md:text-6xl font-bold leading-tight">
+          <h1 className="mx-auto max-w-3xl text-4xl md:text-6xl font-bold leading-tight text-neutral-500">
             مُستخرج الهوية البصرية الذكي
           </h1>
-          <p className="mx-auto mt-5 max-w-2xl text-base md:text-lg opacity-90">
+          <p className="mx-auto mt-5 max-w-2xl text-base md:text-lg opacity-90 text-neutral-600">
             ارفع صورة، ودع خوارزمية K-Means تستخرج لك لوحة ألوان متناسقة مع
             مقترحات خطوط تليق بروح التصميم.
           </p>
