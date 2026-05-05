@@ -11,7 +11,8 @@ import {
 } from "@/lib/palette";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { toast, Toaster } from "@/components/ui/sonner";
+import { Toaster } from "@/components/ui/sonner";
+import { toast } from "sonner";
 
 export const Route = createFileRoute("/")({
   component: Index,
