@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import {
   contrastText,
   kmeans,
@@ -36,7 +36,20 @@ function Index() {
   const [fonts, setFonts] = useState<FontSuggestion[]>([]);
   const [loading, setLoading] = useState(false);
   const [k, setK] = useState(6);
+  const pixelsRef = useRef<RGB[] | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  const analyze = useCallback((pixels: RGB[], kk: number) => {
+    const { centers, counts } = kmeans(pixels, kk);
+    const total = counts.reduce((a, b) => a + b, 0) || 1;
+    const sw: Swatch[] = centers.map((rgb, i) => ({
+      rgb,
+      hex: rgbToHex(rgb),
+      share: counts[i] / total,
+    }));
+    setSwatches(sw);
+    setFonts(suggestFonts(centers));
+  }, []);
 
   const handleFile = useCallback(
     async (file: File) => {
@@ -47,24 +60,29 @@ function Index() {
       setLoading(true);
       try {
         const { pixels, dataUrl } = await loadImagePixels(file, 220);
-        const { centers, counts } = kmeans(pixels, k);
-        const total = counts.reduce((a, b) => a + b, 0) || 1;
-        const sw: Swatch[] = centers.map((rgb, i) => ({
-          rgb,
-          hex: rgbToHex(rgb),
-          share: counts[i] / total,
-        }));
+        pixelsRef.current = pixels;
         setImgUrl(dataUrl);
-        setSwatches(sw);
-        setFonts(suggestFonts(centers));
+        analyze(pixels, k);
       } catch {
         toast.error("تعذّر تحليل الصورة");
       } finally {
         setLoading(false);
       }
     },
-    [k],
+    [k, analyze],
   );
+
+  useEffect(() => {
+    if (pixelsRef.current) {
+      setLoading(true);
+      // defer to next tick to allow UI update
+      const id = setTimeout(() => {
+        analyze(pixelsRef.current!, k);
+        setLoading(false);
+      }, 0);
+      return () => clearTimeout(id);
+    }
+  }, [k, analyze]);
 
   const onDrop = (e: React.DragEvent) => {
     e.preventDefault();
