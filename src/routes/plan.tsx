@@ -83,7 +83,7 @@ function PlanPage() {
         />
         <div className="absolute inset-0 -z-10 bg-black/10" aria-hidden />
         <div className="container mx-auto px-6 pt-14 pb-20 text-center text-white">
-          <p className="mb-3 text-sm tracking-widest uppercase opacity-90">
+          <p className="mb-3 text-sm tracking-widest uppercase opacity-90 text-gray-800">
             AI Palette Pro
           </p>
           <h1 className="mx-auto mt-4 max-w-2xl text-base md:text-lg opacity-100 text-gray-600">
