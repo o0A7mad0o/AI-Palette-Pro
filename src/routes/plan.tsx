@@ -89,7 +89,7 @@ function PlanPage() {
           <h1 className="mx-auto mt-4 max-w-2xl text-base md:text-lg opacity-100 text-gray-600">
             خطة المشروع الجامعي
           </h1>
-          <p className="mx-auto mt-4 max-w-2xl text-base md:text-lg opacity-90">
+          <p className="mx-auto mt-4 max-w-2xl text-base opacity-100 text-gray-600 md:text-lg">
             نظام استخراج وتحليل الهوية البصرية المدعوم بالذكاء الاصطناعي
           </p>
           <div className="mt-6">
