@@ -86,7 +86,7 @@ function PlanPage() {
           <p className="mb-3 text-sm tracking-widest uppercase opacity-90">
             AI Palette Pro
           </p>
-          <h1 className="mx-auto max-w-3xl text-3xl md:text-5xl font-bold leading-tight">
+          <h1 className="mx-auto mt-4 max-w-2xl text-base md:text-lg opacity-100 text-gray-600">
             خطة المشروع الجامعي
           </h1>
           <p className="mx-auto mt-4 max-w-2xl text-base md:text-lg opacity-90">
@@ -230,8 +230,7 @@ function PlanPage() {
         <Section num="11" title="كيفية تشغيل ملف المشروع">
           <h3 className="font-bold text-lg">11.1 تشغيل سكربت Python (ai_palette_pro.py)</h3>
           <p>
-            هذه هي الطريقة الموصى بها للتسليم الجامعي لأنها تستخدم Python
-            والمكتبات المتعارف عليها أكاديمياً.
+            {"\n"}
           </p>
 
           <p className="font-semibold mt-4">الخطوة 1: التأكد من تثبيت Python</p>
