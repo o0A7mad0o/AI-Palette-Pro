@@ -185,7 +185,7 @@ function Index() {
               disabled={!swatches.length}
               onClick={exportPalette}
             >
-              تنزيل اللوحة (.txt)
+              {t("exportPalette")}
             </Button>
           </div>
         </Card>
