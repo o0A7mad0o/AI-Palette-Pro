@@ -13,6 +13,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Toaster } from "@/components/ui/sonner";
 import { toast } from "sonner";
+import { useLang } from "@/lib/i18n";
 
 export const Route = createFileRoute("/")({
   component: Index,
