@@ -295,8 +295,8 @@ function Index() {
       </main>
 
       <footer className="border-t py-6 text-center text-sm text-muted-foreground space-y-1">
-        <p>اعداد الطالب : احمد نبهان - الرقم الجامعي : 0130012510048</p>
-        <p>مشروع جامعي — AI Palette Pro © 2026</p>
+        <p>{t("footerStudent")}</p>
+        <p>{t("footerCopy")}</p>
       </footer>
     </div>
   );
