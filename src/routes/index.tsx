@@ -229,7 +229,7 @@ function Index() {
                           </span>
                         </div>
                         <span className="absolute top-2 right-3 text-[10px] opacity-0 group-hover:opacity-80 transition">
-                          نسخ
+                          {t("copy")}
                         </span>
                       </button>
                     );
