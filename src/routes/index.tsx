@@ -32,6 +32,7 @@ export const Route = createFileRoute("/")({
 type Swatch = { rgb: RGB; hex: string; share: number };
 
 function Index() {
+  const { lang, t } = useLang();
   const [imgUrl, setImgUrl] = useState<string | null>(null);
   const [swatches, setSwatches] = useState<Swatch[]>([]);
   const [fonts, setFonts] = useState<FontSuggestion[]>([]);
