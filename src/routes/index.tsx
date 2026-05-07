@@ -211,7 +211,7 @@ function Index() {
                 className="rounded-3xl border-0 p-6"
                 style={{ boxShadow: "var(--shadow-soft)" }}
               >
-                <h2 className="mb-4 text-xl font-bold">لوحة الألوان المستخرجة</h2>
+                <h2 className="mb-4 text-xl font-bold">{t("paletteTitle")}</h2>
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                   {swatches.map((s) => {
                     const fg = contrastText(s.rgb);
