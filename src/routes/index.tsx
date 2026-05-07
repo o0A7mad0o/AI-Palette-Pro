@@ -66,7 +66,7 @@ function Index() {
         setImgUrl(dataUrl);
         analyze(pixels, k);
       } catch {
-        toast.error("تعذّر تحليل الصورة");
+        toast.error(t("analyzeFailed"));
       } finally {
         setLoading(false);
       }
