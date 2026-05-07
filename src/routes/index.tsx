@@ -203,7 +203,7 @@ function Index() {
               className="md:col-span-2 overflow-hidden rounded-3xl border-0"
               style={{ boxShadow: "var(--shadow-soft)" }}
             >
-              <img src={imgUrl} alt="الصورة المحللة" className="w-full h-full object-cover" />
+              <img src={imgUrl} alt={t("analyzedImage")} className="w-full h-full object-cover" />
             </Card>
 
             <div className="md:col-span-3 space-y-6">
