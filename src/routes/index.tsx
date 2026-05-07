@@ -271,12 +271,9 @@ function Index() {
 
         {/* About */}
         <section className="mx-auto mt-20 max-w-3xl text-center">
-          <h2 className="text-2xl font-bold">كيف يعمل؟</h2>
+          <h2 className="text-2xl font-bold">{t("howTitle")}</h2>
           <p className="mt-3 text-muted-foreground leading-relaxed">
-            يقوم النظام بتصغير الصورة، استخراج بكسلاتها، ثم تطبيق خوارزمية
-            التصنيف <span className="font-mono">K-Means</span> لإيجاد المراكز
-            اللونية الأكثر هيمنة وتمثيلاً للهوية البصرية للصورة. النتيجة: لوحة
-            ألوان جاهزة للنسخ والاستخدام.
+            {t("howBody")}
           </p>
         </section>
 
