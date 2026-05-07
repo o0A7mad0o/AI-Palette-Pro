@@ -193,7 +193,7 @@ function Index() {
         {/* Result */}
         {loading && (
           <p className="mt-10 text-center text-muted-foreground animate-pulse">
-            جاري تحليل الصورة…
+            {t("analyzing")}
           </p>
         )}
 
