@@ -149,9 +149,9 @@ function Index() {
             <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 text-primary text-2xl">
               ⬆
             </div>
-            <p className="text-lg font-semibold">اسحب صورتك هنا أو اضغط للاختيار</p>
+            <p className="text-lg font-semibold">{t("dropTitle")}</p>
             <p className="mt-1 text-sm text-muted-foreground">
-              JPG / PNG / WEBP — تتم المعالجة محلياً في متصفحك دون رفعها لأي خادم
+              {t("dropHint")}
             </p>
             <input
               ref={inputRef}
