@@ -241,7 +241,7 @@ function Index() {
                 className="rounded-3xl border-0 p-6"
                 style={{ boxShadow: "var(--shadow-soft)" }}
               >
-                <h2 className="mb-4 text-xl font-bold">خطوط مقترحة</h2>
+                <h2 className="mb-4 text-xl font-bold">{t("fontsTitle")}</h2>
                 <div className="grid gap-3 sm:grid-cols-2">
                   {fonts.map((f) => (
                     <div
