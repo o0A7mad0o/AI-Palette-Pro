@@ -13,6 +13,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Toaster } from "@/components/ui/sonner";
 import { toast } from "sonner";
+import { useLang } from "@/lib/i18n";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -31,6 +32,7 @@ export const Route = createFileRoute("/")({
 type Swatch = { rgb: RGB; hex: string; share: number };
 
 function Index() {
+  const { lang, t } = useLang();
   const [imgUrl, setImgUrl] = useState<string | null>(null);
   const [swatches, setSwatches] = useState<Swatch[]>([]);
   const [fonts, setFonts] = useState<FontSuggestion[]>([]);
@@ -54,7 +56,7 @@ function Index() {
   const handleFile = useCallback(
     async (file: File) => {
       if (!file.type.startsWith("image/")) {
-        toast.error("الرجاء اختيار ملف صورة صالح");
+        toast.error(t("invalidImage"));
         return;
       }
       setLoading(true);
@@ -64,7 +66,7 @@ function Index() {
         setImgUrl(dataUrl);
         analyze(pixels, k);
       } catch {
-        toast.error("تعذّر تحليل الصورة");
+        toast.error(t("analyzeFailed"));
       } finally {
         setLoading(false);
       }
@@ -92,7 +94,7 @@ function Index() {
 
   const copyHex = (hex: string) => {
     navigator.clipboard.writeText(hex);
-    toast.success(`تم نسخ ${hex}`);
+    toast.success(`${t("copied")} ${hex}`);
   };
 
   const exportPalette = () => {
@@ -108,7 +110,7 @@ function Index() {
   };
 
   return (
-    <div dir="rtl" className="min-h-screen bg-background text-foreground">
+    <div dir={lang === "ar" ? "rtl" : "ltr"} className="min-h-screen bg-background text-foreground">
       <Toaster richColors position="top-center" />
 
       {/* Hero */}
@@ -121,14 +123,13 @@ function Index() {
         <div className="absolute inset-0 -z-10 bg-black/10" aria-hidden />
         <div className="container mx-auto px-6 pt-16 pb-24 text-center text-white">
           <p className="mb-3 text-sm tracking-widest uppercase opacity-80 text-gray-900">
-            AI Palette Pro
+            {t("brand")}
           </p>
           <h1 className="mx-auto max-w-3xl text-4xl md:text-6xl font-bold leading-tight text-neutral-500">
-            مُستخرج الهوية البصرية الذكي
+            {t("heroTitle")}
           </h1>
           <p className="mx-auto mt-5 max-w-2xl text-base md:text-lg opacity-90 text-neutral-600">
-            ارفع صورة، ودع خوارزمية K-Means تستخرج لك لوحة ألوان متناسقة مع
-            مقترحات خطوط تليق بروح التصميم.
+            {t("heroSubtitle")}
           </p>
         </div>
       </header>
@@ -148,9 +149,9 @@ function Index() {
             <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 text-primary text-2xl">
               ⬆
             </div>
-            <p className="text-lg font-semibold">اسحب صورتك هنا أو اضغط للاختيار</p>
+            <p className="text-lg font-semibold">{t("dropTitle")}</p>
             <p className="mt-1 text-sm text-muted-foreground">
-              JPG / PNG / WEBP — تتم المعالجة محلياً في متصفحك دون رفعها لأي خادم
+              {t("dropHint")}
             </p>
             <input
               ref={inputRef}
@@ -166,7 +167,7 @@ function Index() {
 
           <div className="mt-6 flex flex-wrap items-center justify-between gap-4">
             <label className="flex items-center gap-3 text-sm">
-              عدد الألوان:
+              {t("colorsCount")}
               <select
                 value={k}
                 onChange={(e) => setK(Number(e.target.value))}
@@ -184,7 +185,7 @@ function Index() {
               disabled={!swatches.length}
               onClick={exportPalette}
             >
-              تنزيل اللوحة (.txt)
+              {t("exportPalette")}
             </Button>
           </div>
         </Card>
@@ -192,7 +193,7 @@ function Index() {
         {/* Result */}
         {loading && (
           <p className="mt-10 text-center text-muted-foreground animate-pulse">
-            جاري تحليل الصورة…
+            {t("analyzing")}
           </p>
         )}
 
@@ -202,7 +203,7 @@ function Index() {
               className="md:col-span-2 overflow-hidden rounded-3xl border-0"
               style={{ boxShadow: "var(--shadow-soft)" }}
             >
-              <img src={imgUrl} alt="الصورة المحللة" className="w-full h-full object-cover" />
+              <img src={imgUrl} alt={t("analyzedImage")} className="w-full h-full object-cover" />
             </Card>
 
             <div className="md:col-span-3 space-y-6">
@@ -210,7 +211,7 @@ function Index() {
                 className="rounded-3xl border-0 p-6"
                 style={{ boxShadow: "var(--shadow-soft)" }}
               >
-                <h2 className="mb-4 text-xl font-bold">لوحة الألوان المستخرجة</h2>
+                <h2 className="mb-4 text-xl font-bold">{t("paletteTitle")}</h2>
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                   {swatches.map((s) => {
                     const fg = contrastText(s.rgb);
@@ -228,7 +229,7 @@ function Index() {
                           </span>
                         </div>
                         <span className="absolute top-2 right-3 text-[10px] opacity-0 group-hover:opacity-80 transition">
-                          نسخ
+                          {t("copy")}
                         </span>
                       </button>
                     );
@@ -240,7 +241,7 @@ function Index() {
                 className="rounded-3xl border-0 p-6"
                 style={{ boxShadow: "var(--shadow-soft)" }}
               >
-                <h2 className="mb-4 text-xl font-bold">خطوط مقترحة</h2>
+                <h2 className="mb-4 text-xl font-bold">{t("fontsTitle")}</h2>
                 <div className="grid gap-3 sm:grid-cols-2">
                   {fonts.map((f) => (
                     <div
@@ -270,12 +271,9 @@ function Index() {
 
         {/* About */}
         <section className="mx-auto mt-20 max-w-3xl text-center">
-          <h2 className="text-2xl font-bold">كيف يعمل؟</h2>
+          <h2 className="text-2xl font-bold">{t("howTitle")}</h2>
           <p className="mt-3 text-muted-foreground leading-relaxed">
-            يقوم النظام بتصغير الصورة، استخراج بكسلاتها، ثم تطبيق خوارزمية
-            التصنيف <span className="font-mono">K-Means</span> لإيجاد المراكز
-            اللونية الأكثر هيمنة وتمثيلاً للهوية البصرية للصورة. النتيجة: لوحة
-            ألوان جاهزة للنسخ والاستخدام.
+            {t("howBody")}
           </p>
         </section>
 
@@ -285,21 +283,20 @@ function Index() {
             className="rounded-3xl border-0 p-8"
             style={{ boxShadow: "var(--shadow-elegant)" }}
           >
-            <h2 className="text-2xl font-bold">خطة المشروع الكاملة</h2>
+            <h2 className="text-2xl font-bold">{t("planCtaTitle")}</h2>
             <p className="mt-3 text-muted-foreground">
-              اطّلع على وثيقة المشروع الجامعي بصيغة منسقة: الأهداف، البنية
-              التقنية، سير العمل، وكيفية التشغيل.
+              {t("planCtaBody")}
             </p>
             <Link to="/plan" className="inline-block mt-5">
-              <Button size="lg">عرض خطة المشروع</Button>
+              <Button size="lg">{t("viewPlan")}</Button>
             </Link>
           </Card>
         </section>
       </main>
 
       <footer className="border-t py-6 text-center text-sm text-muted-foreground space-y-1">
-        <p>اعداد الطالب : احمد نبهان - الرقم الجامعي : 0130012510048</p>
-        <p>مشروع جامعي — AI Palette Pro © 2026</p>
+        <p>{t("footerStudent")}</p>
+        <p>{t("footerCopy")}</p>
       </footer>
     </div>
   );
