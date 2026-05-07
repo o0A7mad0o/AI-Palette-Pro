@@ -167,7 +167,7 @@ function Index() {
 
           <div className="mt-6 flex flex-wrap items-center justify-between gap-4">
             <label className="flex items-center gap-3 text-sm">
-              عدد الألوان:
+              {t("colorsCount")}
               <select
                 value={k}
                 onChange={(e) => setK(Number(e.target.value))}
