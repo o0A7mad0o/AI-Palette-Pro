@@ -110,7 +110,7 @@ function Index() {
   };
 
   return (
-    <div dir="rtl" className="min-h-screen bg-background text-foreground">
+    <div dir={lang === "ar" ? "rtl" : "ltr"} className="min-h-screen bg-background text-foreground">
       <Toaster richColors position="top-center" />
 
       {/* Hero */}
