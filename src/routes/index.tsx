@@ -283,13 +283,12 @@ function Index() {
             className="rounded-3xl border-0 p-8"
             style={{ boxShadow: "var(--shadow-elegant)" }}
           >
-            <h2 className="text-2xl font-bold">خطة المشروع الكاملة</h2>
+            <h2 className="text-2xl font-bold">{t("planCtaTitle")}</h2>
             <p className="mt-3 text-muted-foreground">
-              اطّلع على وثيقة المشروع الجامعي بصيغة منسقة: الأهداف، البنية
-              التقنية، سير العمل، وكيفية التشغيل.
+              {t("planCtaBody")}
             </p>
             <Link to="/plan" className="inline-block mt-5">
-              <Button size="lg">عرض خطة المشروع</Button>
+              <Button size="lg">{t("viewPlan")}</Button>
             </Link>
           </Card>
         </section>
