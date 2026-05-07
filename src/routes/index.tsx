@@ -56,7 +56,7 @@ function Index() {
   const handleFile = useCallback(
     async (file: File) => {
       if (!file.type.startsWith("image/")) {
-        toast.error("الرجاء اختيار ملف صورة صالح");
+        toast.error(t("invalidImage"));
         return;
       }
       setLoading(true);
