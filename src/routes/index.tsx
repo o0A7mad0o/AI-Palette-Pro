@@ -94,7 +94,7 @@ function Index() {
 
   const copyHex = (hex: string) => {
     navigator.clipboard.writeText(hex);
-    toast.success(`تم نسخ ${hex}`);
+    toast.success(`${t("copied")} ${hex}`);
   };
 
   const exportPalette = () => {
