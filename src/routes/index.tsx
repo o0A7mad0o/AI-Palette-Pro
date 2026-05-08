@@ -173,7 +173,7 @@ function Index() {
                 onChange={(e) => setK(Number(e.target.value))}
                 className="rounded-md border border-input bg-background px-3 py-1.5"
               >
-                {[4, 5, 6, 7, 8].map((n) => (
+                {[3, 6, 9, 12].map((n) => (
                   <option key={n} value={n}>
                     {n}
                   </option>
